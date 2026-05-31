@@ -47,7 +47,10 @@
   }
   .hero .sun{position:absolute;top:26px;left:-30px;width:120px;height:120px;border-radius:50%;
     background:radial-gradient(circle,#ffe08a,#f9c349 60%,transparent 72%);filter:blur(2px);opacity:.85}
-  .hero .waves{position:absolute;left:0;right:0;bottom:-2px;height:60px;display:block}
+  .hero .waves{position:absolute;left:0;right:0;bottom:-2px;height:60px;display:block;z-index:3}
+  .hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .hero .veil{position:absolute;inset:0;z-index:1;background:linear-gradient(160deg,rgba(14,107,168,.78),rgba(6,50,79,.93))}
+  .hero>*:not(.bg):not(.veil){position:relative;z-index:2}
   .hero .kicker{font-size:.82rem;letter-spacing:.32em;text-transform:uppercase;opacity:.85;margin-bottom:10px}
   .hero h1{font-family:'Playfair Display',serif;font-weight:800;font-size:2.5rem;line-height:1.1;margin-bottom:6px;text-shadow:0 2px 18px rgba(0,0,0,.25)}
   .hero h1 .it{font-style:italic;color:#ffe08a}
@@ -89,7 +92,12 @@
     margin-bottom:20px;overflow:hidden;opacity:0;transform:translateY(22px);transition:.6s cubic-bezier(.2,.8,.2,1)}
   .day.show{opacity:1;transform:none}
   .day-head{padding:18px 20px;color:#fff;position:relative;overflow:hidden}
-  .day-head .emoji{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:2.7rem;opacity:.92}
+  .day-head .emoji{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:2.7rem;opacity:.95;filter:drop-shadow(0 2px 6px rgba(0,0,0,.4))}
+  .day-head{min-height:124px;display:flex;flex-direction:column;justify-content:center}
+  .day-head .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .day-head .veil{position:absolute;inset:0;z-index:1;background:linear-gradient(to right,rgba(0,0,0,.18),rgba(0,0,0,.64))}
+  .day-head>*:not(.bg):not(.veil){position:relative;z-index:2}
+  .shot{display:block;width:100%;max-height:190px;object-fit:cover;border-radius:13px;margin-top:10px;box-shadow:var(--shadow-sm)}
   .day-head .dnum{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;opacity:.9}
   .day-head h3{font-family:'Playfair Display',serif;font-weight:800;font-size:1.4rem;margin-top:2px}
   .day-head .where{font-size:.9rem;opacity:.95;font-weight:400;margin-top:2px}
@@ -168,6 +176,8 @@
 <body>
 
 <header class="hero">
+  <img class="bg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Milan_Cathedral_from_Piazza_del_Duomo.jpg/1280px-Milan_Cathedral_from_Piazza_del_Duomo.jpg" alt="" onerror="this.remove()">
+  <span class="veil"></span>
   <div class="sun"></div>
   <div class="kicker">✈️ ITALIA · GIUGNO 2026 · יוני</div>
   <h1>הטיול של שרון&nbsp;ועלמה<br><span class="it">Milano &amp; Misano</span></h1>
@@ -213,7 +223,7 @@
   <!-- DAY 1 -->
   <h2 class="sec-title" id="day1"><span class="dot"></span>המסלול יום-יום</h2>
   <div class="day d1">
-    <div class="day-head"><span class="emoji">🏙️</span>
+    <div class="day-head"><img class="bg" loading="lazy" alt="" onerror="this.remove()" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Galleria_Milano_%28179532365%29.jpeg/1280px-Galleria_Milano_%28179532365%29.jpeg"><span class="veil"></span><span class="emoji">🏙️</span>
       <div class="dnum">יום 1 · חמישי 4/6</div>
       <h3>נחיתה ושופינג במילאנו</h3>
       <div class="where">🏨 לינה: Missori Suites · ליד הדואומו</div>
@@ -229,7 +239,8 @@
         <span class="pill metro">מטרו M3 צהוב</span></div>
       <div class="step"><span class="t">צהריים</span><div class="h">פנצרוטו אגדי ב-Luini 🥟</div>
         <p><span class="it">Via Santa Radegonda 16</span> — 100 מטר מהדואומו, מוסד מ-1949. €3.20 לפנצרוטו. כדאי ה-<i>fritto</i> (מטוגן) עם עגבניה ומוצרלה; לעלמה אפשר גרסת נוטלה לקינוח.</p>
-        <span class="pill food">אוכל · תור זז מהר</span></div>
+        <span class="pill food">אוכל · תור זז מהר</span>
+        <img class="shot" loading="lazy" alt="פנצרוטו" onerror="this.remove()" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Panzerotti_chez_PanzerotTiamo_%28Lyon%29_-_2.jpg/960px-Panzerotti_chez_PanzerotTiamo_%28Lyon%29_-_2.jpg"></div>
       <div class="step"><span class="t">אחה"צ</span><div class="h">הדואומו + הגלריה 🕍</div>
         <p>הקתדרלה <span class="it">Duomo di Milano</span> — שווה לעלות לגג (Terrazze), ילדים מתים על זה. ליד: <span class="it">Galleria Vittorio Emanuele II</span> — מעבר קניות מקושת ויפהפה.</p>
         <span class="pill walk">הליכה</span></div>
@@ -241,7 +252,7 @@
 
   <!-- DAY 2 -->
   <div class="day d2">
-    <div class="day-head"><span class="emoji">🚆</span>
+    <div class="day-head"><img class="bg" loading="lazy" alt="" onerror="this.remove()" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Frecciarossa_1000_nuova_livrea.jpg/1280px-Frecciarossa_1000_nuova_livrea.jpg"><span class="veil"></span><span class="emoji">🚆</span>
       <div class="dnum">יום 2 · שישי 5/6</div>
       <h3>עוברים למיסאנו — חוברים לעדן</h3>
       <div class="where">🏨 לינה: Hotel Ambasciatori · על הים</div>
@@ -264,7 +275,7 @@
 
   <!-- DAY 3 -->
   <div class="day d3">
-    <div class="day-head"><span class="emoji">🏁</span>
+    <div class="day-head"><img class="bg" loading="lazy" alt="" onerror="this.remove()" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Portoverde_%28Misano_Adriatico%29_02.jpg/1280px-Portoverde_%28Misano_Adriatico%29_02.jpg"><span class="veil"></span><span class="emoji">🏁</span>
       <div class="dnum">יום 3 · שבת 6/6</div>
       <h3>יום התחרות של עדן</h3>
       <div class="where">🏨 לינה: Hotel Ambasciatori</div>
@@ -282,7 +293,7 @@
 
   <!-- DAY 4 -->
   <div class="day d4">
-    <div class="day-head"><span class="emoji">🎢</span>
+    <div class="day-head"><img class="bg" loading="lazy" alt="" onerror="this.remove()" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/La_costa_di_Riccione.jpg/1280px-La_costa_di_Riccione.jpg"><span class="veil"></span><span class="emoji">🎢</span>
       <div class="dnum">יום 4 · ראשון 7/6</div>
       <h3>יום אטרקציות מלא</h3>
       <div class="where">🏨 לינה: Hotel Ambasciatori</div>
@@ -295,9 +306,11 @@
       <div class="step"><div class="h">🐬 Oltremare (ריצ'ונה)</div>
         <p>פארק משפחתי עם דולפינים, חיות וטבע — אטרקציה רכה ויפה לבת 10.</p></div>
       <div class="step"><div class="h">🗼 Italia in Miniatura (רימיני)</div>
-        <p>כל איטליה במיניאטורה — האתרים המפורסמים בקטן. כיף וצילומים מדהימים.</p></div>
+        <p>כל איטליה במיניאטורה — האתרים המפורסמים בקטן. כיף וצילומים מדהימים.</p>
+        <img class="shot" loading="lazy" alt="Italia in Miniatura" onerror="this.remove()" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Panoramica_italia_in_miniatura.jpg/960px-Panoramica_italia_in_miniatura.jpg"></div>
       <div class="step"><div class="h">🏰 סן מרינו</div>
-        <p>מדינה זעירה על הר, כ-45 דקות נסיעה. נוף, מבצרים, וחותמת בדרכון למזכרת.</p></div>
+        <p>מדינה זעירה על הר, כ-45 דקות נסיעה. נוף, מבצרים, וחותמת בדרכון למזכרת.</p>
+        <img class="shot" loading="lazy" alt="San Marino" onerror="this.remove()" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Basilica_del_Santo_Marino%2C_San_Marino%2C_2022-09-20%2C_DD_11.jpg/1280px-Basilica_del_Santo_Marino%2C_San_Marino%2C_2022-09-20%2C_DD_11.jpg"></div>
       <div class="step"><div class="h">🏖️ סתם יום חוף</div>
         <p>אם מעדיפים רוגע — החוף הפרטי של המלון + גלידה זה גם יום מושלם.</p></div>
     </div>
@@ -305,7 +318,7 @@
 
   <!-- DAY 5 -->
   <div class="day d5">
-    <div class="day-head"><span class="emoji">🧳</span>
+    <div class="day-head"><img class="bg" loading="lazy" alt="" onerror="this.remove()" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Torri_di_Bologna%2C_Bologna.jpg/1280px-Torri_di_Bologna%2C_Bologna.jpg"><span class="veil"></span><span class="emoji">🧳</span>
       <div class="dnum">יום 5 · שני 8/6</div>
       <h3>חוזרים לכיוון מלפנסה</h3>
       <div class="where">🏨 לינה: Holiday Inn Express · ליד שדה התעופה</div>
@@ -325,7 +338,7 @@
 
   <!-- DAY 6 -->
   <div class="day d6">
-    <div class="day-head"><span class="emoji">🛫</span>
+    <div class="day-head"><img class="bg" loading="lazy" alt="" onerror="this.remove()" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Milan_malpensa_terminal_airport.jpg/1280px-Milan_malpensa_terminal_airport.jpg"><span class="veil"></span><span class="emoji">🛫</span>
       <div class="dnum">יום 6 · שלישי 9/6</div>
       <h3>טיסה הביתה</h3>
       <div class="where">✈️ חזרה לישראל</div>
